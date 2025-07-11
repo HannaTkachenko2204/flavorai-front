@@ -9,12 +9,11 @@ const navItems = [
 ]
 
 const Navigation: FC<NavigationProps> = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // заміни логіку авторизації на свою
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
 
   const handleAuthClick = () => {
     if (isLoggedIn) {
-      // логіка виходу
       setIsLoggedIn(false)
       navigate('/')
     } else {
@@ -38,7 +37,6 @@ const Navigation: FC<NavigationProps> = () => {
         </NavLink>
       ))}
 
-      {/* Кнопка увійти/вийти */}
       <button
         onClick={handleAuthClick}
         className="block px-4 py-2 text-gray-700 hover:text-blue-600 transition cursor-pointer"

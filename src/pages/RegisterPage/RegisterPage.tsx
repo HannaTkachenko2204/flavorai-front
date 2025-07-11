@@ -39,4 +39,4 @@ const RegisterPage: FC<RegisterPageProps> = () => {
   );
 };
 
-export default RegisterPage;
+export default RegisterPage
