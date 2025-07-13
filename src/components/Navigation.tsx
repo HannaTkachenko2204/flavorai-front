@@ -1,6 +1,5 @@
 import { useState, type FC } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import type { NavigationProps } from './NavigationTypes'
 
 const navItems = [
   { path: '/', label: 'Рецепти' },
@@ -8,7 +7,7 @@ const navItems = [
   { path: '/add-recipe', label: 'Додати рецепт' },
 ]
 
-const Navigation: FC<NavigationProps> = () => {
+const Navigation: FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
 

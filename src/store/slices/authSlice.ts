@@ -1,40 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit' // допомагає створювати reducers + actions в одному місці
+import type { PayloadAction } from '@reduxjs/toolkit' // для типізації дій (actions) з payload, тобто тими, що передають дані
 
 interface User {
   email: string
 }
 
+// структура гілки auth в Redux store:
 interface AuthState {
   user: User | null
   token: string | null
   isLoggedIn: boolean
 }
 
+// початковий стан гілки auth:
 const initialState: AuthState = {
   user: null,
-  token: localStorage.getItem('token'),
-  isLoggedIn: !!localStorage.getItem('token'),
+  token: localStorage.getItem('token'), // щоб зберегти сесію після перезавантаження сторінки
+  isLoggedIn: !!localStorage.getItem('token'), // !! - приводить значення до булевого типу
 }
 
+// створення slice
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'auth', // назва-префікс для екшенів, наприклад: 'auth/loginSuccess'
   initialState,
-  reducers: {
+  reducers: { // об'єкт з функціями, які оновлюють стан
     loginSuccess(state, action: PayloadAction<{ user: User; token: string }>) {
-      state.user = action.payload.user
-      state.token = action.payload.token
+      // state тут - це тільки частина стану, яка відповідає за auth
+      state.user = action.payload.user // оновлюємо user з payload
+      state.token = action.payload.token // оновлюємо token з payload
       state.isLoggedIn = true
-      localStorage.setItem('token', action.payload.token)
     },
+    // скидаємо всі дані користувача при логауті
     logout(state) {
       state.user = null
       state.token = null
       state.isLoggedIn = false
-      localStorage.removeItem('token')
     },
   },
 })
 
-export const { loginSuccess, logout } = authSlice.actions
-export default authSlice.reducer
+export const { loginSuccess, logout } = authSlice.actions // об'єкт, який містить усі екшени під власними іменами
+// основний експорт з цього файлу, тому пізніше ми можемо імпортувати його будь-яким ім'ям: у store.ts - import authReducer from './slices/authSlice'
+export default authSlice.reducer // сам ред'юсер (функція, яка змінює стан)

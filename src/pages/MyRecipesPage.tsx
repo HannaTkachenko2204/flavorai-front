@@ -1,11 +1,10 @@
-import type { FC } from 'react'
-import type { MyRecipesPageProps } from './MyRecipesPageTypes'
-import Container from '../../components/Container/Container'
-import RecipeCard from '../../components/RecipeCard/RecipeCard'
-import { myRecipes } from '../../data/myRecipes'
-import { Link } from 'react-router-dom'
+import type { FC } from "react";
+import Container from "../components/Container";
+import RecipeCard from "../components/RecipeCard";
+import { myRecipes } from "../data/myRecipes";
+import { Link } from "react-router-dom";
 
-const MyRecipesPage: FC<MyRecipesPageProps> = () => {
+const MyRecipesPage: FC = () => {
   return (
     <Container>
       <h1 className="text-3xl font-bold mb-4">Мої рецепти</h1>
@@ -24,7 +23,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = () => {
         )}
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default MyRecipesPage
+export default MyRecipesPage;

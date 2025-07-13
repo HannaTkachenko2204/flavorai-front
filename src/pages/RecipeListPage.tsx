@@ -1,10 +1,9 @@
 import type { FC } from "react";
-import type { RecipeListPageProps } from "./RecipeListPageTypes";
-import Container from "../../components/Container/Container";
-import { recipes } from "../../data/recipes";
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import Container from "../components/Container";
+import { recipes } from "../data/recipes";
+import RecipeCard from "../components/RecipeCard";
 
-const RecipeListPage: FC<RecipeListPageProps> = () => {
+const RecipeListPage: FC = () => {
   return (
     <Container>
       <h1 className="text-3xl font-bold mb-6">Рецепти</h1>

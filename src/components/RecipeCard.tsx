@@ -1,6 +1,11 @@
 import type { FC } from 'react'
-import type { RecipeCardProps } from './RecipeCardTypes'
 import { Link } from 'react-router-dom'
+
+export interface RecipeCardProps {
+  id: number | string
+  title: string
+  description: string
+}
 
 const RecipeCard: FC<RecipeCardProps> = ({ id, title, description }) => {
   return (
@@ -20,3 +25,4 @@ const RecipeCard: FC<RecipeCardProps> = ({ id, title, description }) => {
 }
 
 export default RecipeCard
+
