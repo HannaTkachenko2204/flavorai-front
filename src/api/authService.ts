@@ -37,3 +37,7 @@ export const refreshTokenRequest = async (): Promise<RefreshResponse> => {
   const res = await plainAxios.post<RefreshResponse>('/auth/refresh')
   return res.data
 }
+
+export const logoutRequest = () => {
+  return api.post('/auth/logout');
+}

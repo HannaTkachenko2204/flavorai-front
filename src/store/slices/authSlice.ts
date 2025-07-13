@@ -15,8 +15,8 @@ interface AuthState {
 // початковий стан гілки auth:
 const initialState: AuthState = {
   user: null,
-  token: localStorage.getItem('token'), // щоб зберегти сесію після перезавантаження сторінки
-  isLoggedIn: !!localStorage.getItem('token'), // !! - приводить значення до булевого типу
+  token: null,
+  isLoggedIn: false,
 }
 
 // створення slice
