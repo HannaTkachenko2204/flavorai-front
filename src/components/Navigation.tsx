@@ -32,20 +32,37 @@ const Navigation: FC = () => {
 
   return (
     <nav className="flex flex-row items-center bg-transparent shadow-none">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          'block px-4 py-2 text-gray-700 hover:text-blue-600 transition ' +
+          (isActive ? 'font-semibold' : '')
+        }
+      >
+        Рецепти
+      </NavLink>
+
       {isLoggedIn && (
         <>
-          {navItems.map(({ path, label }) => (
-            <NavLink
-              key={path}
-              to={path}
-              className={({ isActive }) =>
-                'block px-4 py-2 text-gray-700 hover:text-blue-600 transition ' +
-                (isActive ? 'font-semibold' : '')
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          <NavLink
+            to="/my-recipes"
+            className={({ isActive }) =>
+              'block px-4 py-2 text-gray-700 hover:text-blue-600 transition ' +
+              (isActive ? 'font-semibold' : '')
+            }
+          >
+            Мої рецепти
+          </NavLink>
+
+          <NavLink
+            to="/add-recipe"
+            className={({ isActive }) =>
+              'block px-4 py-2 text-gray-700 hover:text-blue-600 transition ' +
+              (isActive ? 'font-semibold' : '')
+            }
+          >
+            Додати рецепт
+          </NavLink>
         </>
       )}
 
