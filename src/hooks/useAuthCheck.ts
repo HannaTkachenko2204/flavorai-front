@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshTokenRequest } from "../api/authService";
 import { loginSuccess, logout } from "../store/slices/authSlice";
+import type { AxiosError } from "axios";
 
 export const useAuthCheck = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,14 @@ export const useAuthCheck = () => {
         const data = await refreshTokenRequest();
         dispatch(loginSuccess(data)); // оновлюємо стан з новим токеном та інформацією користувача
       } catch (err) {
+        const axiosError = err as AxiosError<{ message?: string }>;
+        // якщо помилка через відсутність refreshToken — не логати і не викликати logout
+        if (
+          axiosError.response?.status === 401 &&
+          axiosError.response.data?.message === "No refresh token"
+        ) {
+          return;
+        }
         console.error("Refresh token error:", err);
         dispatch(logout()); // видаляємо інформацію про користувача та токен із Redux
       }
