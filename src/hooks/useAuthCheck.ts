@@ -20,11 +20,8 @@ export const useAuthCheck = () => {
         dispatch(loginSuccess(data)); // оновлюємо стан з новим токеном та інформацією користувача
       } catch (err) {
         const axiosError = err as AxiosError<{ message?: string }>;
-        // якщо помилка через відсутність refreshToken — не логати і не викликати logout
-        if (
-          axiosError.response?.status === 401 &&
-          axiosError.response.data?.message === "No refresh token"
-        ) {
+        if (axiosError.response?.status === 401) {
+          // якщо користувач просто не залогінений — нічого не робимо
           return;
         }
         console.error("Refresh token error:", err);
