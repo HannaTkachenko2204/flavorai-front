@@ -1,4 +1,4 @@
-import type { RecipeCardProps } from '../components/RecipeCard/RecipeCardTypes'
+import type { RecipeCardProps } from "../components/RecipeCard"
 
 export const myRecipes: RecipeCardProps[] = [
   {
