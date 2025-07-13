@@ -5,12 +5,6 @@ import { logout } from '../store/slices/authSlice'
 import type { RootState } from '../store/store'
 import { logoutRequest } from '../api/authService'
 
-const navItems = [
-  { path: '/', label: 'Рецепти' },
-  { path: '/my-recipes', label: 'Мої рецепти' },
-  { path: '/add-recipe', label: 'Додати рецепт' },
-]
-
 const Navigation: FC = () => {
   const isLoggedIn = useSelector((state: RootState) => Boolean(state.auth.token))
   const dispatch = useDispatch()
