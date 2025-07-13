@@ -5,7 +5,7 @@ import { refreshTokenRequest } from './authService'
 
 // cтворюємо кастомний екземпляр axios
 const api = axios.create({
-  baseURL: 'https://flavorai-back.onrender.com/api',
+  baseURL: 'https://flavorai-back.onrender.com',
   withCredentials: true, // дозволяє надсилати httpOnly cookies (потрібно для refresh токенів, бо вони в cookie)
 })
 
